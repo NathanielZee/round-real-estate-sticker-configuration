@@ -77,7 +77,6 @@ export default function StickerCalculator() {
   const [selectedQuantity, setSelectedQuantity] = useState<number | null>(null)
   const [customQuantity, setCustomQuantity] = useState<number | null>(null)
   const [showCustomQuantity, setShowCustomQuantity] = useState(false)
-  // ...existing code...
   const [artworkMethod, setArtworkMethod] = useState("")
   const [shippingMethod, setShippingMethod] = useState("13.95")
   const [uploadedImages, setUploadedImages] = useState<string[]>([])
@@ -501,9 +500,33 @@ export default function StickerCalculator() {
               >
                 ← Back
               </button>
-              {/* ...existing code... (artwork and other details section) */}
-            </>
-          )}
+
+              <div>
+                <label className="text-gray-700 font-medium text-xs sm:text-sm block mb-3">
+                  How will your print ready artwork be supplied?
+                </label>
+                <div className="flex flex-col gap-2">
+                  <button
+                    type="button"
+                    className={`px-3 py-2 border border-gray-300 rounded font-medium cursor-pointer text-xs sm:text-sm ${
+                      artworkMethod === "ready" ? "bg-black text-white" : "bg-gray-100 text-black"
+                    }`}
+                    onClick={() => setArtworkMethod("ready")}
+                  >
+                    I have print-ready files
+                  </button>
+                  <button
+                    type="button"
+                    className={`px-3 py-2 border border-gray-300 rounded font-medium cursor-pointer text-xs sm:text-sm ${
+                      artworkMethod === "design" ? "bg-black text-white" : "bg-gray-100 text-black"
+                    }`}
+                    onClick={() => setArtworkMethod("design")}
+                  >
+                    Design my own online
+                  </button>
+                  <button
+                    type="button"
+                    className={`px-3 py-2 border border-gray-300 rounded font-medium cursor-pointer text-xs sm:text-sm ${
                       artworkMethod === "help" ? "bg-black text-white" : "bg-gray-100 text-black"
                     }`}
                     onClick={() => setArtworkMethod("help")}
