@@ -397,22 +397,32 @@ export default function StickerCalculator() {
                 selectedColorCombination &&
                 (() => {
                   const colors = getColorsFromCombination(selectedColorCombination)
+                  const useCustomImage = selectedColorCombination === "white-black" && selectedText === "SOLD"
+
                   return (
                     <div className="space-y-2">
                       <label className="text-gray-700 font-medium text-xs sm:text-sm">Preview</label>
                       <div className="border border-gray-300 rounded-lg p-4 bg-gray-50 flex justify-center">
-                        <div
-                          className="rounded-full shadow-sm border-2 flex items-center justify-center font-bold text-center text-2xl sm:text-3xl"
-                          style={{
-                            backgroundColor: colors.bg,
-                            color: colors.text,
-                            width: "120px",
-                            height: "120px",
-                            borderColor: "#ccc",
-                          }}
-                        >
-                          {selectedText}
-                        </div>
+                        {useCustomImage ? (
+                          <img
+                            src="/sold-preview.png"
+                            alt="SOLD sticker preview"
+                            className="w-[120px] h-[120px] object-contain"
+                          />
+                        ) : (
+                          <div
+                            className="rounded-full shadow-sm border-2 flex items-center justify-center font-bold text-center text-2xl sm:text-3xl"
+                            style={{
+                              backgroundColor: colors.bg,
+                              color: colors.text,
+                              width: "120px",
+                              height: "120px",
+                              borderColor: "#ccc",
+                            }}
+                          >
+                            {selectedText}
+                          </div>
+                        )}
                       </div>
                     </div>
                   )
@@ -657,3 +667,4 @@ export default function StickerCalculator() {
     </main>
   )
 }
+
